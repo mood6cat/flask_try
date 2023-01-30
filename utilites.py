@@ -27,14 +27,21 @@ def get_by_pk(pk):
             return candidate
     return
 
-def get_by_skill(skill_name):
-    '''
-    :param skill_name: навык
-    :return:которая вернет кандидатов по навыку
-    '''
-    candi = []
+# def get_by_skill(skill_name):
+#     '''
+#     :param skill_name: навык
+#     :return:которая вернет кандидатов по навыку
+#     '''
+#     # candidates = []
+#     # for candidate in load_candidates():
+#     #     if skill_name.lower() in candidate['skills'].lower().split(', '):
+#     #         candidates.append(candidate)
+#     #         return candidates
+
+def get_by_skill(skill):
+    result = []
     for candidate in load_candidates():
-        if skill_name in candidate['skills']:
-            candi.append(candidate)
-            return candi
-print(get_all())
+        skills = candidate['skills'].lower().split(", ")
+        if skill in skills:
+            result.append(candidate)
+    return result
